@@ -76,7 +76,9 @@ if (program.characters) {
                         if(answers.choix=='Comics'){
                             axios.get(lien+variable+id+"/comics?"+code_verif)
                             .then(function ({ data:{data:{results}}}) {
-                                console.log(results)
+                                for(let i=0; i<results.length;i++) {
+                                    console.log( ' nom : ' + results[i].title + ' , id : ' + results[i].id )
+                                }
                             })
                         }
                         else if (answers.choix=='Createurs'){
