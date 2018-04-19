@@ -32,9 +32,8 @@ if (program.characters) {
     axios.get(lien+variable+code_verif)
         .then(function ({ data:{data:{results}}}) {
             for(let i=0; i<results.length;i++) {
-                retour.personnage = retour.personnage+ ' nom : '+results[i].name+' , id : ' +results[i].id
+                console.log( ' nom : ' + results[i].name + ' , id : ' + results[i].id )
             }
-            console.log(retour)
         })
         .catch(function (error) {
             console.log(error);
