@@ -32,8 +32,8 @@ if (program.characters) {
         .then(function ({ data:{data:{results}}}) {
             console.log(results)
             for(let i=0; i<results.length;i++) {
-                retour.personnage = retour.personnage+ '\n nom : '+results[i].name+' , id : ' +results[i].id
-        }
+                retour.personnage = retour.personnage+ ' nom : '+results[i].name+' , id : ' +results[i].id
+            }
             console.log(retour)
         })
         .catch(function (error) {
@@ -61,22 +61,77 @@ if (program.characters) {
         })
     } else if (program.comics) {
         const variable = 'comics?'
+        axios.get(lien+variable+code_verif)
+        .then(function ({ data:{data:{results}}}) {
+            for(let i=0; i<results.length;i++) {
+                retour.comics = retour.comics+ ' titre : '+results[i].title+' , id : ' +results[i].id
+            }
+            console.log(retour)
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        ;
     } else if (program.comic) {
         const variable = `comics/${program.comic}?`
     } else if (program.creators) {
         const variable = 'creators?'
+        axios.get(lien+variable+code_verif)
+        .then(function ({ data:{data:{results}}}) {
+            for(let i=0; i<results.length;i++) {
+                retour.creators = retour.creators+ ' titre : '+results[i].firstName+' , id : ' +results[i].id
+            }
+            console.log(retour)
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        ;
     } else if (program.creator) {
         const variable = `creators/${program.creator}?`
     } else if (program.events) {
         const variable = 'events?'
+        axios.get(lien+variable+code_verif)
+        .then(function ({ data:{data:{results}}}) {
+            for(let i=0; i<results.length;i++) {
+                retour.events = retour.events+ ' titre : '+results[i].title+' , id : ' +results[i].id
+            }
+            console.log(retour)
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        ;
     } else if (program.event) {
         const variable = `events/${program.event}?`
     } else if (program.series) {
         const variable = 'series?'
+        axios.get(lien+variable+code_verif)
+        .then(function ({ data:{data:{results}}}) {
+            for(let i=0; i<results.length;i++) {
+                retour.series = retour.series+ ' titre : '+results[i].title+' , id : ' +results[i].id
+            }
+            console.log(retour)
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        ;
     } else if (program.serie) {
         const variable = `series/${program.serie}?`
     } else if (program.stories) {
         const variable = 'stories?'
+        axios.get(lien+variable+code_verif)
+        .then(function ({ data:{data:{results}}}) {
+            for(let i=0; i<results.length;i++) {
+                retour.stories = retour.stories+ ' titre : '+results[i].title+' , id : ' +results[i].id
+            }
+            console.log(retour)
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+        ;
     } else if (program.storie) {
         const variable = `stories/${program.storie}?`
     }else {
