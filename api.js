@@ -66,7 +66,6 @@ if (program.characters) {
                         name:'choix',
                         choices:[
                             'Comics',
-                            'Createurs',
                             'Events',
                             'Series',
                             'Storie',
@@ -81,20 +80,46 @@ if (program.characters) {
                                 }
                             })
                         }
-                        else if (answers.choix=='Createurs'){
-                            console.log(2)
-                        }
                         else if (answers.choix=='Events'){
-                            console.log(2)
+                            axios.get(lien+variable+id+"/events?"+code_verif)
+                            .then(function ({ data:{data:{results}}}) {
+                                for(let i=0; i<results.length;i++) {
+                                    console.log( ' nom : ' + results[i].title + ' , id : ' + results[i].id )
+                                }
+                            })
                         }
                         else if (answers.choix=='Series'){
-                            console.log(2)
+                            axios.get(lien+variable+id+"/series?"+code_verif)
+                            .then(function ({ data:{data:{results}}}) {
+                                for(let i=0; i<results.length;i++) {
+                                    console.log( ' nom : ' + results[i].title + ' , id : ' + results[i].id )
+                                }
+                            })
                         }
                         else if (answers.choix=='Stories'){
-                            console.log(2)
+                            axios.get(lien+variable+id+"/stories?"+code_verif)
+                            .then(function ({ data:{data:{results}}}) {
+                                console.log( ' nom : ' + results[i].title + ' , id : ' + results[i].id ) 
+                            })
                         }
                         else {
-                            console.log(2)
+                            axios.get(lien+variable+id+"?"+code_verif)
+                            .then(function ({ data:{data:{results}}}) {
+                                    console.log( results[0].id )
+                                    console.log("\n comics :")
+                                    for (let j= 0; j<results[0].comics.items.length;j++){
+                                        console.log( results[0].comics.items[j].name)
+                                    }
+                                    console.log(" \n series : ")
+                                    for (let j= 0; j<results[0].series.items.length;j++){
+                                        console.log( results[0].series.items[j].name)
+                                    }
+                                    console.log("\n events : ")
+                                    for (let j= 0; j<results[0].events.items.length;j++){
+                                        console.log( results[0].events.items[j].name)
+                                    }
+                                }
+                            )
                         }
                     });
                     })
