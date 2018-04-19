@@ -8,10 +8,11 @@ const rl = require('readline').createInterface({
 	input: process.stdin, output: process.stdout
 })
 const retour = {}
+var id = ""
 
 program
     .version('1.0.0', '-v, --version')
-    .option('-c, --characters', 'Tous les personnages')
+    .option('-c, --characters [debutdunompersonnage]', 'Tous les personnages')
     .option('-x, --character [personnageID]', 'un personnage')
     .option('-o, --comics', 'Tous les comics')
     .option('-m, --comic [comicID]', 'un comic')
@@ -27,10 +28,9 @@ program
 program.parse(process.argv)
 
 if (program.characters) {
-    const variable = 'characters?'
+    const variable = `characters?nameStartsWith=${program.characters}&limit=100&`
     axios.get(lien+variable+code_verif)
         .then(function ({ data:{data:{results}}}) {
-            console.log(results)
             for(let i=0; i<results.length;i++) {
                 retour.personnage = retour.personnage+ ' nom : '+results[i].name+' , id : ' +results[i].id
             }
@@ -41,24 +41,66 @@ if (program.characters) {
         })
         ;
     } else if (program.character) {
-        const variable = `characters/${program.character}`
-        rl.question('Voulez un élément précis:\n 1- comics \n 2- créateur \n 3-evenement \n 4-séries \n 5-histoire \n 0-aucun', (answer) => {
-            answer_int = parseInt(answer)
-            if(/^\d{1,3}$/.test(answer_int)){	
-                if (answer_int === 0 ) 
-                {
-                    
-                }
-                else if (answer_int ===1 )
-                {
-                    
-                }
-                else if (answer_int === 2 )
-                {
-                    console.log("")
-                }
-            }
-        })
+        const nom = `${program.character}`
+        inquirer.prompt([{
+            type: 'input',
+            message: 'début du nom du personnage',
+            name: 'username'
+        }]).then(test => {
+            console.log(test.username)
+            const variable = `characters?nameStartsWith=${test.username}&limit=100&`
+            axios.get(lien+variable+code_verif)
+                .then(function ({ data:{data:{results}}}) {
+                    for(let i=0; i<results.length;i++) {
+                    if (results[i].name == nom){
+                        id = results[i].id
+                        }
+                    }
+                    if(id==""){
+                        id = `${program.character}`
+                    }
+                    console.log(id)
+                    const variable = "characters/"
+                    inquirer.prompt([{
+                        type:'rawlist',
+                        message:'Que voulez vous voir à propos de votre personnage',
+                        name:'choix',
+                        choices:[
+                            'Comics',
+                            'Createurs',
+                            'Events',
+                            'Series',
+                            'Storie',
+                            'Tout'
+                        ]
+                    }]).then(answers => {
+                        if(answers.choix=='Comics'){
+                            axios.get(lien+variable+id+"/comics?"+code_verif)
+                            .then(function ({ data:{data:{results}}}) {
+                                console.log(results)
+                            })
+                        }
+                        else if (answers.choix=='Createurs'){
+                            console.log(2)
+                        }
+                        else if (answers.choix=='Events'){
+                            console.log(2)
+                        }
+                        else if (answers.choix=='Series'){
+                            console.log(2)
+                        }
+                        else if (answers.choix=='Stories'){
+                            console.log(2)
+                        }
+                        else {
+                            console.log(2)
+                        }
+                    });
+                    })
+                .catch(function (error) {
+                    console.log(error);
+                })})
+            ;
     } else if (program.comics) {
         const variable = 'comics?'
         axios.get(lien+variable+code_verif)
