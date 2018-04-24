@@ -661,9 +661,9 @@ if (program.characters) {
                         for (let j= 0; j<results[0].characters.items.length;j++){
                             console.log( results[0].characters.items[j].name)
                         }
-                        console.log("\n stories :")
-                        for (let j= 0; j<results[0].stories.items.length;j++){
-                            console.log( results[0].stories.items[j].name)
+                        console.log("\n series :")
+                        for (let j= 0; j<results[0].series.items.length;j++){
+                            console.log( results[0].series.items[j].name)
                         }
                         console.log(" \n creators : ")
                         for (let j= 0; j<results[0].creators.items.length;j++){
@@ -681,9 +681,7 @@ if (program.characters) {
                 )
             }
             
-        }).catch(function (error) {
-            console.log(error);
-        });
+        })
         }else {
     program.help()
 }
