@@ -1,0 +1,3 @@
+ nom : Agent X (Nijo) , id : 1011031
+ nom : Deadpool , id : 1009268
+ nom : Taskmaster , id : 1009648
