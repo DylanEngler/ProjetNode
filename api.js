@@ -2,12 +2,20 @@
 const program = require('commander')
 const axios = require('axios')
 const inquirer = require('inquirer')
+const os = require("os");
+const fs = require('fs')
 const lien = 'https://gateway.marvel.com/v1/public/'
 const code_verif = 'ts=1&apikey=1dfbefadf2a95439362a3c18bc9ef646&hash=fdc146bf317b6191b2bb9cbd6f27d2b1'
-const rl = require('readline').createInterface({
-	input: process.stdin, output: process.stdout
-})
-var id = ""
+var id = ''
+var test = ''
+try {
+    fs.writeFile('resultat.txt', '', (err) => {
+    if (err) throw err
+    })  
+
+} catch (err) {
+    console.error('ERR > ', err)
+}
 
 program
     .version('1.0.0', '-v, --version')
@@ -30,9 +38,27 @@ if (program.characters) {
     const variable = `characters?nameStartsWith=${program.characters}&limit=100&`
     axios.get(lien+variable+code_verif)
         .then(function ({ data:{data:{results}}}) {
-            for(let i=0; i<results.length;i++) {
-                console.log( ' nom : ' + results[i].name + ' , id : ' + results[i].id )
-            }
+            inquirer.prompt([{
+                type:'rawlist',
+                message:'Voulez-vous sauvegarder',
+                name:'sauvegarde',
+                choices:[
+                    'Oui',
+                    'Non'
+                ]
+            }]).then(answers => {if(answers.sauvegarde =='Oui'){
+                for(let i=0; i<results.length;i++) {
+                    test =  'nom : ' + results[i].name + ' , id : ' + results[i].id+ '\n'
+                    fs.appendFile('resultat.txt',test,(err) => {
+                        if (err) throw err
+                    })  
+                }
+            }else {
+                for(let i=0; i<results.length;i++) { 
+                    console.log( ' nom : ' + results[i].name + ' , id : ' + results[i].id )
+                }
+            }})
+            
         })
         .catch(function (error) {
             console.log(error);
@@ -105,7 +131,6 @@ if (program.characters) {
                         else {
                             axios.get(lien+variable+id+"?"+code_verif)
                             .then(function ({ data:{data:{results}}}) {
-                                    console.log( results[0].id )
                                     console.log("\n comics :")
                                     for (let j= 0; j<results[0].comics.items.length;j++){
                                         console.log( results[0].comics.items[j].name)
@@ -685,3 +710,4 @@ if (program.characters) {
         }else {
     program.help()
 }
+
