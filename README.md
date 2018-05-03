@@ -1,8 +1,7 @@
-# ProjetNode
-api_marvel
+# ProjetNode : Api Marvel
 
-Détails des options de l'api :
-A chaque option, on propose d'enregistrer les résultats dans un fichier .txt
+### Détails des options de l'api :
+*A chaque option, on propose d'enregistrer les résultats dans un fichier .txt*
 - '-c, --characters [DebutDuNomDuPersonnage]', 'Tous les personnages' :
 On doit renseigner une première lettre après la commande pour filtrer les résultats.
 - '-x, --character [personnageID]/[NomDuPersonnage]', 'un personnage en particulier'
