@@ -2,7 +2,6 @@
 const program = require('commander')
 const axios = require('axios')
 const inquirer = require('inquirer')
-const os = require("os");
 const fs = require('fs')
 const character = require('./character')
 const characters = require('./characters')
@@ -16,10 +15,7 @@ const eventt= require('./event')
 const events = require('./events')
 const storie= require('./storie')
 const stories = require('./stories')
-const lien = 'https://gateway.marvel.com/v1/public/'
-const code_verif = 'ts=1&apikey=1dfbefadf2a95439362a3c18bc9ef646&hash=fdc146bf317b6191b2bb9cbd6f27d2b1'
-var id = ''
-var test = ''
+
 try {
     fs.writeFile('resultat.txt', '', (err) => {
     if (err) throw err
@@ -73,5 +69,3 @@ if (program.characters) {
     }else {
     program.help()
 }
-
-

@@ -1,3 +1,20 @@
- nom : Agent X (Nijo) , id : 1011031
- nom : Deadpool , id : 1009268
- nom : Taskmaster , id : 1009648
+ nom : Despicable Deadpool (2017) #300 , id : 67329
+ nom : Deadpool Classic Companion Vol. 2 (Trade Paperback) , id : 67018
+ nom : Despicable Deadpool (2017) #299 , id : 66908
+ nom : You Are Deadpool (2018) #2 , id : 67594
+ nom : Color Your Own Deadpool Again! (Trade Paperback) , id : 67015
+ nom : Spider-Man/Deadpool (2016) #31 , id : 66793
+ nom : You Are Deadpool (2018) #1 , id : 67059
+ nom : Deadpool vs. Old Man Logan (Trade Paperback) , id : 66760
+ nom : Despicable Deadpool (2017) #297 , id : 66539
+ nom : Deadpool Vs. The Punisher (Trade Paperback) , id : 64292
+ nom : Wolverine Epic Collection: Blood Debt (Trade Paperback) , id : 66570
+ nom : Weapon X: The Return (Hardcover) , id : 67056
+ nom : Spider-Man/Deadpool (2016) #30 , id : 66555
+ nom : Spider-Man/Deadpool Vol. 5: Arms Race (Trade Paperback) , id : 66794
+ nom : Spider-Man/Deadpool (2016) #29 , id : 66509
+ nom : Deadpool Minibus Vol. 0 (Hardcover) , id : 66407
+ nom : Despicable Deadpool (2017) #298 , id : 66761
+ nom : Spider-Man/Deadpool (2016) #32 , id : 67552
+ nom : Deadpool by Posehn & Duggan: The Complete Collection Vol. 2 (Trade Paperback) , id : 66489
+ nom : Despicable Deadpool (2017) #296 , id : 66490
